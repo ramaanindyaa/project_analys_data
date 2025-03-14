@@ -15,8 +15,8 @@ st.markdown("""
 """)
 
 # Memuat data yang sudah dibersihkan
-hour_data = pd.read_csv('hour_data_cleaned.csv')  # Pastikan path file sesuai
-day_data = pd.read_csv('day_data_cleaned.csv')    # Pastikan path file sesuai
+hour_data = pd.read_csv('Dashboard/hour_data_cleaned.csv')  # Pastikan path file sesuai
+day_data = pd.read_csv('Dashboard/day_data_cleaned.csv')    # Pastikan path file sesuai
 
 # Menampilkan beberapa baris pertama dari dataset
 st.write("### Data Penyewaan Sepeda (Hourly) - Sample Data:")
