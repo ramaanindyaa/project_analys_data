@@ -18,7 +18,7 @@ Dashboard ini dibangun menggunakan **Streamlit** untuk menampilkan visualisasi d
 
 Sebelum menjalankan dashboard ini, pastikan Anda telah menginstal **Python 3** dan **Streamlit** di sistem Anda.
 
-### Ketergantungan:
+### Requirements:
 
 - **Python 3** (Disarankan versi 3.7 ke atas)
 - **Streamlit** (untuk membangun dashboard)
