@@ -9,14 +9,14 @@ st.set_page_config(page_title="Dashboard Penyewaan Sepeda", page_icon="🚴", la
 
 # Menambahkan Judul dan Deskripsi
 st.title("🚴 Dashboard Penyewaan Sepeda 🚴")
-st.markdown("""
+st.markdown(""" 
     **Dashboard Penyewaan Sepeda** yang menganalisis pengaruh cuaca, musim, waktu, hari kerja, 
     dan perbedaan antara pengguna kasual dan terdaftar terhadap jumlah penyewaan sepeda di sistem berbasis sepeda.
 """)
 
 # Memuat data yang sudah dibersihkan
-hour_data = pd.read_csv('Dashboard/hour_data_cleaned.csv')  # Pastikan path file sesuai
-day_data = pd.read_csv('Dashboard/day_data_cleaned.csv')    # Pastikan path file sesuai
+hour_data = pd.read_csv('hour_data_cleaned.csv')  
+day_data = pd.read_csv('day_data_cleaned.csv')    
 
 # Menampilkan beberapa baris pertama dari dataset
 st.write("### Data Penyewaan Sepeda (Hourly) - Sample Data:")
@@ -82,15 +82,27 @@ ax.set_ylabel('Jumlah Penyewaan Sepeda')
 ax.legend()
 st.pyplot(fig)
 
-# Menampilkan Total Penyewaan per Bulan
+# Menampilkan Total Penyewaan per Bulan dengan Fitur Interaktif
 st.subheader("Jumlah Penyewaan Sepeda per Bulan")
+
+# Menghitung Total Penyewaan per Bulan
 monthly_rentals = hour_data.groupby('mnth')['cnt'].sum()
 
-st.bar_chart(monthly_rentals)
+# Menambahkan Widget untuk Memilih Rentang Bulan
+start_month, end_month = st.slider(
+    "Pilih Rentang Bulan",
+    min_value=1, max_value=12, value=(1, 12), step=1
+)
+
+# Filter data berdasarkan rentang bulan yang dipilih
+filtered_monthly_rentals = monthly_rentals[start_month-1:end_month]
+
+# Menampilkan Grafik dengan Rentang Bulan yang Dipilih
+st.bar_chart(filtered_monthly_rentals)
 
 # Menambahkan Footer dengan informasi Copyright
-st.markdown("""
-    ---
-    Data yang digunakan pada dashboard ini berasal dari [Bike Sharing Dataset](http://capitalbikeshare.com/system-data).
-    ### Dashboard Penyewaan Sepeda - 2025
+st.markdown(""" 
+    --- 
+    Data yang digunakan pada dashboard ini berasal dari [Bike Sharing Dataset](http://capitalbikeshare.com/system-data). 
+    ### Dashboard Penyewaan Sepeda - 2025 
 """)
