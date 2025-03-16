@@ -1,1 +1,1 @@
-link streamlit cloud: https://projectanalysdata-u7t7w5vxg9u9sbjtuvfbln.streamlit.app/
+link streamlit cloud: https://projectanalysdata-5kjcdyvgcjss6vqr7mcfow.streamlit.app/
